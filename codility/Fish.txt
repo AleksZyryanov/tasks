@@ -1,0 +1,31 @@
+// you can also use imports, for example:
+import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A, int[] B) {
+        // write your code in Java SE 8
+        Stack<Integer> stack = new Stack<>();
+        int survivals = 0;
+        for(int i = 0; i < A.length; i++){
+            if(B[i] == 0){
+                if(stack.empty()){
+                    survivals++;
+                    continue;
+                } 
+                while(!stack.empty()){
+                    if(stack.peek() > A[i]){
+                        break;
+                    } else {
+                        stack.pop();
+      		        if(stack.empty()) survivals++;
+                    }
+                } continue;
+            }
+            stack.add(A[i]);
+        }
+    return survivals + stack.size();
+    }
+}

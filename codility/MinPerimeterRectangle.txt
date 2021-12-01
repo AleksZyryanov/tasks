@@ -1,0 +1,19 @@
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int N) {
+        int min = N + 1;
+        int side=1;
+        while(side * side <= N) {
+            if(N % side == 0) {
+                min = Math.min(min, N/side + side);
+            }                                 
+            side++;
+        }
+        return 2*min;
+    }
+}2

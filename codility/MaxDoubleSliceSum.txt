@@ -1,0 +1,28 @@
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+      int n = A.length;
+      int[] leftToRigth = new int[n];
+      int[] rigthToLeft = new int[n];
+    
+      for(int i = 1; i < n-1; i++){
+        leftToRigth[i] = Math.max(leftToRigth[i-1] + A[i], 0);
+      }
+      for(int i = n-2; i > 0; i--){
+        rigthToLeft[i] = Math.max(rigthToLeft[i+1]+A[i], 0);
+      }
+    
+      int max = 0;
+    
+      for(int i = 1; i < n-1; i++){
+        max = Math.max(max, leftToRigth[i-1] + rigthToLeft[i+1]);
+      }
+    
+      return max;
+    }
+}

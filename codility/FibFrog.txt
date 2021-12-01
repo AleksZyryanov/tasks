@@ -1,0 +1,31 @@
+// you can also use imports, for example:
+import java.util.*;
+class Solution {
+    public int solution(int[] A) {
+        if (A.length == 0) {
+            return 1;
+        }
+        int[] dp = new int[A.length + 2];
+        dp[0] = 1;
+        dp[A.length + 1] = -1;
+        for (int i = 1; i < A.length + 2; i++) {
+            int step = 1;
+            int previous = 1;
+            int min = Integer.MAX_VALUE;
+            while (step <= i) {
+                if ((i == A.length + 1 || A[i - 1] == 1) 
+			&& (i - step - 1 == -1 || A[i - step - 1] == 1) 
+			&& dp[i - step] > 0) {
+                    min = Math.min(min, dp[i - step] + 1);
+                }
+                int tmp = step;
+                step = step + previous;
+                previous = tmp;
+            }
+            if (min < Integer.MAX_VALUE) {
+                dp[i] = min;
+            }
+        }
+        return dp[A.length + 1] == -1 ? -1 : dp[A.length + 1] - 1;
+    }
+}

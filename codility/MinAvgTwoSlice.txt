@@ -1,0 +1,68 @@
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+        // write your code in Java SE 8
+        double res = Integer.MAX_VALUE;
+        int index = -1;
+        int j;
+        double tempSum;
+
+        for(int i = 0; i < A.length -1; i++){
+            j = 1;
+            tempSum = A[i];
+            while((i + j) < A.length && j < 4){
+                tempSum = tempSum + A[i + j];
+                if(tempSum / (j + 1) < res) {
+                    res = tempSum / (j + 1);
+                    index = i;
+                }
+            j++;
+            }
+        }
+        return index;
+    }
+}
+
+
+
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+        int goal = 0;
+        int[] P = new int[A.length + 1];
+        P[0] = 0;
+        for (int i = 0; i < A.length; i++) {
+            P[i + 1] = P[i] + A[i];
+        }
+
+        double minAvg = 10000;
+        for(int j = 0; j < A.length - 1; j++) {
+            double currentAvg2 = (double)(P[j + 2] - P[j]) / 2;
+            if (currentAvg2 < minAvg) {
+                minAvg = currentAvg2;
+                goal = j;
+            }
+
+            if (j == A.length - 2) break;;
+
+            double currentAvg3 = (double)(P[j + 3] - P[j]) / 3;
+            if (currentAvg3 < minAvg) {
+                minAvg = currentAvg3;
+                goal = j;
+            }
+        }
+
+        return goal;
+    }
+}

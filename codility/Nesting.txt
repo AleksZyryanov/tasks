@@ -1,0 +1,35 @@
+// you can also use imports, for example:
+import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(String S) {
+        // write your code in Java SE 8
+        if (S.length() % 2 != 0) return 0;
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < S.length(); i++) {
+            if (S.charAt(i) == '(') {
+            stack.push(S.charAt(i));
+            } else {
+            if (stack.size() == 0) return 0;
+            
+            Character last = stack.pop();
+            if (!isValidPair(last, S.charAt(i))) return 0;
+            }
+        }
+        if (stack.size() != 0) return 0;
+
+    return 1;
+    }
+    
+    private boolean isValidPair(Character left, Character right){
+        if(left == '(' && right == ')') return true;
+        if(left == '[' && right == ']') return true; 
+        if(left == '{' && right == '}') return true;   
+        return false;
+    }
+}

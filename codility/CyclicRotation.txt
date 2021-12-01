@@ -1,0 +1,17 @@
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int[] solution(int[] A, int K) {
+        // write your code in Java SE 8
+        int[] res = new int[A.length];
+        if(A.length != 0 && K % A.length >= 0) K = K % A.length;
+        if(A.length <= 1 || A.length == K || A.length < K) return A;
+        System.arraycopy(A, 0, res, K , A.length - K);
+        System.arraycopy(A, A.length - K, res, 0, K);
+        return res;
+    }
+}
