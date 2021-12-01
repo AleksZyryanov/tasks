@@ -1,0 +1,19 @@
+задачка с интервью - A bottle of Coke is $3. You can exchange two empty bottles for a bottle of Coke. You have $15 now in your pocket. So how many bottles of Coke can you drink at most?
+
+ну и код написать для решения такой задачи))
+
+
+Daria, 17:59
+•	Backend developer - to be presented after completion – 60 minutes]
+The store owner has sold lots of milk jars and wants to sell more products. Create a rest service application in Spring Boot (or any other framework) for a store catalog:
+i.	The application must have a DB (you can use an in-memory SQL DB like H2 or any other DB of your choice)
+ii.	Required functionality:
+1.	Add a product. A product must have:
+a.	Name [for example – “Milk jar”]
+b.	Price (in dollars) [for example – 5]
+c.	Amount to return for 1 free product [for example – 2]
+2.	Delete a product by name.
+3.	List all products.
+4.	For a given budget (in dollars) and a list of selected products - calculate the maximum number of total products that can be bought for each product. You must include one of the following features:
+a.	Parallel calculation - send several types of objects to the BE and calculate the final amount in separate threads for each type.
+b.	Build cache for calculation. The cache needs to be built on input parameters. Next calculation with the same parameters needs to use the cache and not DB. Cache size is 10.
